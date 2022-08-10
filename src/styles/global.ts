@@ -15,6 +15,8 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
+    line-height: 1.6;
+    
     ${({ theme }) => css`
       background-color: ${theme.colors.background};
       color: ${theme.colors.text};
@@ -47,5 +49,6 @@ export const GlobalStyle = createGlobalStyle`
   h5,
   h6 {
     color: ${({ theme }) => theme.colors.title};
+    font-weight: 700;
   }
 `;
