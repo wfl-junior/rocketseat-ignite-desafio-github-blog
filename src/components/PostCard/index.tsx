@@ -9,7 +9,7 @@ import {
 interface PostCardProps {}
 
 export const PostCard: React.FC<PostCardProps> = () => (
-  <PostCardContainer>
+  <PostCardContainer href="#">
     <Header>
       <Title>JavaScript data types and data structures</Title>
       <DateText>Há 1 dia</DateText>
