@@ -5,6 +5,8 @@ export const HeaderContainer = styled.header`
   justify-content: center;
   padding: 4rem 1rem 8.375rem;
   background-image: url(/images/header-background-image.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
   background-color: ${({ theme }) => theme.colors.profile};
   position: relative;
 `;

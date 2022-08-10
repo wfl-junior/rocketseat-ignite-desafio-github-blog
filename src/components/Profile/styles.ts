@@ -43,7 +43,8 @@ export const Description = styled.p`
 `;
 
 export const Footer = styled.footer`
-  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  margin-top: auto;
   display: flex;
   align-items: center;
   gap: 1.5rem;

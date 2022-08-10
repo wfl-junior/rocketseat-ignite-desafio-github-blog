@@ -1,6 +1,16 @@
 import { Header } from "../../components/Header";
+import { Input } from "../../components/Input";
+import { PostCard } from "../../components/PostCard";
 import { Profile } from "../../components/Profile";
-import { HomeContainer, HomeContent } from "./styles";
+import {
+  Content,
+  HomeContainer,
+  Posts,
+  PublicationsAmount,
+  PublicationsTitle,
+  SearchContainer,
+  SearchHeader,
+} from "./styles";
 
 interface HomeProps {}
 
@@ -8,8 +18,26 @@ export const Home: React.FC<HomeProps> = () => (
   <HomeContainer>
     <Header />
 
-    <HomeContent>
+    <Content>
       <Profile />
-    </HomeContent>
+
+      <SearchContainer>
+        <SearchHeader>
+          <PublicationsTitle>Publicações</PublicationsTitle>
+          <PublicationsAmount>6 publicações</PublicationsAmount>
+        </SearchHeader>
+
+        <Input type="text" placeholder="Buscar conteúdo" />
+      </SearchContainer>
+
+      <Posts>
+        <PostCard />
+        <PostCard />
+        <PostCard />
+        <PostCard />
+        <PostCard />
+        <PostCard />
+      </Posts>
+    </Content>
   </HomeContainer>
 );
