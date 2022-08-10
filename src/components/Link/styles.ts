@@ -4,7 +4,6 @@ import { textLink } from "../../styles/typography";
 export const LinkContainer = styled.a`
   color: ${({ theme }) => theme.colors.blue};
   text-transform: uppercase;
-  text-decoration: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,4 +14,6 @@ export const LinkContainer = styled.a`
   }
 
   ${textLink}
+
+  line-height: 0;
 `;

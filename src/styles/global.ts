@@ -36,6 +36,10 @@ export const GlobalStyle = createGlobalStyle`
     cursor: pointer;
   }
 
+  a {
+    text-decoration: none;
+  }
+
   input,
   button {
     border: 0;
