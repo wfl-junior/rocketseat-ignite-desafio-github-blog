@@ -8,6 +8,7 @@ export const ArticleHeaderContainer = styled.div`
   padding: 2rem;
   border-radius: 10px;
   background-color: ${({ theme }) => theme.colors.profile};
+  box-shadow: 0 2px 28px rgb(0 0 0 / 0.2);
 `;
 
 export const Header = styled.header`
