@@ -5,6 +5,8 @@ import {
   faUserGroup,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import useSWR from "swr";
+import { api } from "../../services/api";
 import { Link } from "../Link";
 import {
   Avatar,
@@ -18,44 +20,72 @@ import {
   Title,
 } from "./styles";
 
-interface ProfileProps {}
+interface User {
+  login: string;
+  name: string;
+  avatar_url: string;
+  company: string | null;
+  followers: number;
+  html_url: string;
+  bio: string;
+}
 
-export const Profile: React.FC<ProfileProps> = () => (
-  <ProfileContainer>
-    <Avatar src="https://github.com/wfl-junior.png" />
+async function fetchUser(): Promise<User> {
+  const { data } = await api.get<User>("/users/wfl-junior");
 
-    <Info>
-      <Header>
-        <Title>Wallace Júnior</Title>
+  return {
+    login: data.login,
+    name: data.name,
+    avatar_url: data.avatar_url,
+    company: data.company,
+    followers: data.followers,
+    html_url: data.html_url,
+    bio: data.bio,
+  };
+}
 
-        <Link href="https://github.com/wfl-junior" target="_blank">
-          GitHub
-          <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
-        </Link>
-      </Header>
+export const Profile: React.FC = () => {
+  const { data: user } = useSWR("user", fetchUser);
 
-      <Description>
-        Tristique volutpat pulvinar vel massa, pellentesque egestas. Eu viverra
-        massa quam dignissim aenean malesuada suscipit. Nunc, volutpat pulvinar
-        vel mass.
-      </Description>
+  return (
+    <ProfileContainer>
+      <Avatar src={user?.avatar_url || "https://github.com/wfl-junior.png"} />
 
-      <Footer>
-        <FooterInfo>
-          <FontAwesomeIcon icon={faGithub} />
-          <FooterInfoText>wfl-junior</FooterInfoText>
-        </FooterInfo>
+      <Info>
+        <Header>
+          <Title>{user?.name || "Wallace Júnior"}</Title>
 
-        <FooterInfo>
-          <FontAwesomeIcon icon={faBuilding} />
-          <FooterInfoText>Rocketseat</FooterInfoText>
-        </FooterInfo>
+          <Link
+            href={user?.html_url || '"https://github.com/wfl-junior"'}
+            target="_blank"
+          >
+            GitHub
+            <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+          </Link>
+        </Header>
 
-        <FooterInfo>
-          <FontAwesomeIcon icon={faUserGroup} />
-          <FooterInfoText>32 seguidores</FooterInfoText>
-        </FooterInfo>
-      </Footer>
-    </Info>
-  </ProfileContainer>
-);
+        <Description>
+          {user?.bio ||
+            "Tristique volutpat pulvinar vel massa, pellentesque egestas. Eu viverra massa quam dignissim aenean malesuada suscipi. Nunc, volutpat pulvinar vel mass."}
+        </Description>
+
+        <Footer>
+          <FooterInfo>
+            <FontAwesomeIcon icon={faGithub} />
+            <FooterInfoText>{user?.login || "wfl-junior"}</FooterInfoText>
+          </FooterInfo>
+
+          <FooterInfo>
+            <FontAwesomeIcon icon={faBuilding} />
+            <FooterInfoText>{user?.company || "Sem empresa"}</FooterInfoText>
+          </FooterInfo>
+
+          <FooterInfo>
+            <FontAwesomeIcon icon={faUserGroup} />
+            <FooterInfoText>{user?.followers || 0} seguidores</FooterInfoText>
+          </FooterInfo>
+        </Footer>
+      </Info>
+    </ProfileContainer>
+  );
+};

@@ -1,3 +1,4 @@
+import { Post } from "../../pages/Home";
 import {
   ContentPreview,
   DateText,
@@ -6,19 +7,17 @@ import {
   Title,
 } from "./styles";
 
-interface PostCardProps {}
+interface PostCardProps {
+  post: Post;
+}
 
-export const PostCard: React.FC<PostCardProps> = () => (
+export const PostCard: React.FC<PostCardProps> = ({ post }) => (
   <PostCardContainer href="#">
     <Header>
-      <Title>JavaScript data types and data structures</Title>
-      <DateText>Há 1 dia</DateText>
+      <Title>{post.title}</Title>
+      <DateText>{post.created_at}</DateText>
     </Header>
 
-    <ContentPreview>
-      Programming languages all have built-in data structures, but these often
-      differ from one language to another. This article attempts to list the
-      built-in data structures available in...
-    </ContentPreview>
+    <ContentPreview>{post.body}</ContentPreview>
   </PostCardContainer>
 );

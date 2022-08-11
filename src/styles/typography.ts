@@ -18,6 +18,12 @@ export const titleSmall = css`
   font-size: 1.25rem;
 `;
 
+export const textLarge = css`
+  font-weight: 400;
+  line-height: 1.6;
+  font-size: 1.125rem;
+`;
+
 export const textMedium = css`
   font-weight: 400;
   line-height: 1.6;

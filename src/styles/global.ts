@@ -14,8 +14,9 @@ export const GlobalStyle = createGlobalStyle`
     box-shadow: 0 0 0 1px ${({ theme }) => theme.colors.blue};
   }
 
-  body {
+  body, #root {
     line-height: 1.6;
+    min-height: 100vh;
     
     ${({ theme }) => css`
       background-color: ${theme.colors.background};

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { textSmall, titleSmall } from "../../styles/typography";
+import { textLarge, textSmall, titleSmall } from "../../styles/typography";
 
 export const HomeContainer = styled.div`
   padding-bottom: 2rem;
@@ -13,7 +13,7 @@ export const Content = styled.main`
 
 export const SearchContainer = styled.div`
   width: 100%;
-  margin-top: 4.5rem;
+  margin-block: 4.5rem 3rem;
 `;
 
 export const SearchHeader = styled.header`
@@ -37,8 +37,13 @@ export const PublicationsAmount = styled.header`
 `;
 
 export const Posts = styled.div`
-  margin-top: 3rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
+`;
+
+export const PostsMessage = styled.p`
+  text-align: center;
+
+  ${textLarge}
 `;
