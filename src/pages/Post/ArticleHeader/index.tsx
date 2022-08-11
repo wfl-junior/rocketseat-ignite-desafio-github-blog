@@ -6,7 +6,7 @@ import {
   faComment,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "../../../components/Link";
+import { Link, RouterLink } from "../../../components/Link";
 import {
   ArticleHeaderContainer,
   Footer,
@@ -21,10 +21,10 @@ interface ArticleHeaderProps {}
 export const ArticleHeader: React.FC<ArticleHeaderProps> = () => (
   <ArticleHeaderContainer>
     <Header>
-      <Link href="#" target="_blank">
+      <RouterLink to="/">
         <FontAwesomeIcon icon={faChevronLeft} />
         Voltar
-      </Link>
+      </RouterLink>
 
       <Link href="#" target="_blank">
         Ver no GitHub

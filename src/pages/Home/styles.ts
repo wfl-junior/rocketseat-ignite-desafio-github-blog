@@ -5,12 +5,6 @@ export const HomeContainer = styled.div`
   padding-bottom: 2rem;
 `;
 
-export const Content = styled.main`
-  max-width: 54rem;
-  margin-inline: auto;
-  padding-inline: 1rem;
-`;
-
 export const SearchContainer = styled.div`
   width: 100%;
   margin-block: 4.5rem 3rem;

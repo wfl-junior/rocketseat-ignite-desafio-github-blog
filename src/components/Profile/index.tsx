@@ -55,10 +55,7 @@ export const Profile: React.FC = () => {
         <Header>
           <Title>{user?.name || "Wallace Júnior"}</Title>
 
-          <Link
-            href={user?.html_url || '"https://github.com/wfl-junior"'}
-            target="_blank"
-          >
+          <Link href={user?.html_url || "#"} target="_blank">
             GitHub
             <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
           </Link>

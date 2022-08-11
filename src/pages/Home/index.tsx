@@ -3,7 +3,6 @@ import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import { useState } from "react";
 import removeMarkdown from "remove-markdown";
 import useSWR from "swr";
-import { Header } from "../../components/Header";
 import { Input } from "../../components/Input";
 import { Loading } from "../../components/Loading";
 import { PostCard } from "../../components/PostCard";
@@ -11,7 +10,6 @@ import { Profile } from "../../components/Profile";
 import { useDebouncedValue } from "../../hooks/useDebouncedValue";
 import { api } from "../../services/api";
 import {
-  Content,
   HomeContainer,
   Posts,
   PostsMessage,
@@ -63,41 +61,37 @@ export const Home: React.FC = () => {
 
   return (
     <HomeContainer>
-      <Header />
+      <Profile />
 
-      <Content>
-        <Profile />
+      <SearchContainer>
+        <SearchHeader>
+          <PublicationsTitle>Publicações</PublicationsTitle>
+          <PublicationsAmount>6 publicações</PublicationsAmount>
+        </SearchHeader>
 
-        <SearchContainer>
-          <SearchHeader>
-            <PublicationsTitle>Publicações</PublicationsTitle>
-            <PublicationsAmount>6 publicações</PublicationsAmount>
-          </SearchHeader>
+        <Input
+          type="text"
+          placeholder="Buscar conteúdo"
+          value={query}
+          onChange={event => setQuery(event.target.value)}
+        />
+      </SearchContainer>
 
-          <Input
-            type="text"
-            placeholder="Buscar conteúdo"
-            value={query}
-            onChange={event => setQuery(event.target.value)}
-          />
-        </SearchContainer>
-
-        {posts ? (
-          posts.length ? (
-            <Posts>
-              {posts.map(post => (
-                <PostCard key={post.number} post={post} />
-              ))}
-            </Posts>
-          ) : (
-            <PostsMessage>Sem resultados 😭</PostsMessage>
-          )
-        ) : error ? (
-          <PostsMessage>Ocorreu um erro ao buscar pelos posts 😰</PostsMessage>
+      {posts ? (
+        posts.length ? (
+          <Posts>
+            {posts.map(post => (
+              <PostCard key={post.number} post={post} />
+            ))}
+          </Posts>
         ) : (
-          <Loading />
-        )}
-      </Content>
+          <PostsMessage>Sem resultados 😭</PostsMessage>
+        )
+      ) : error ? (
+        <PostsMessage>Ocorreu um erro ao buscar pelos posts 😰</PostsMessage>
+      ) : (
+        <Loading />
+      )}
     </HomeContainer>
   );
 };

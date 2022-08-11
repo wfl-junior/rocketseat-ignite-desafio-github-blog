@@ -1,7 +1,8 @@
-import styled from "styled-components";
+import { Link } from "react-router-dom";
+import styled, { css } from "styled-components";
 import { textLink } from "../../styles/typography";
 
-export const LinkContainer = styled.a`
+const linkStyling = css`
   color: ${({ theme }) => theme.colors.blue};
   text-transform: uppercase;
   display: flex;
@@ -16,4 +17,12 @@ export const LinkContainer = styled.a`
   ${textLink}
 
   line-height: 0;
+`;
+
+export const LinkContainer = styled.a`
+  ${linkStyling}
+`;
+
+export const RouterLinkContainer = styled(Link)`
+  ${linkStyling}
 `;

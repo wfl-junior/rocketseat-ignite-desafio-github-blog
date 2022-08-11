@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 import { textMedium, textSmall, titleMedium } from "../../styles/typography";
 
-export const PostCardContainer = styled.a`
+export const PostCardContainer = styled(Link)`
   padding: 2rem;
   border-radius: 10px;
   text-decoration: none;

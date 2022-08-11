@@ -12,7 +12,7 @@ interface PostCardProps {
 }
 
 export const PostCard: React.FC<PostCardProps> = ({ post }) => (
-  <PostCardContainer href="#">
+  <PostCardContainer to={`/post/${post.number}`}>
     <Header>
       <Title>{post.title}</Title>
       <DateText>{post.created_at}</DateText>
