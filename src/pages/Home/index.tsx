@@ -1,5 +1,3 @@
-import ptBR from "date-fns/esm/locale/pt-BR";
-import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import { useState } from "react";
 import removeMarkdown from "remove-markdown";
 import useSWR from "swr";
@@ -9,6 +7,7 @@ import { PostCard } from "../../components/PostCard";
 import { Profile } from "../../components/Profile";
 import { useDebouncedValue } from "../../hooks/useDebouncedValue";
 import { api } from "../../services/api";
+import { formatCreatedAt } from "../../utils/formatCreatedAt";
 import {
   HomeContainer,
   Posts,
@@ -46,10 +45,7 @@ async function fetchPosts(key: string) {
       number: post.number,
       title: post.title,
       body,
-      created_at: formatDistanceToNow(new Date(post.created_at), {
-        addSuffix: true,
-        locale: ptBR,
-      }),
+      created_at: formatCreatedAt(post.created_at),
     };
   });
 }

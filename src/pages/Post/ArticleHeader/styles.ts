@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { textMedium, titleLarge } from "../../../styles/typography";
+import { textLarge, textMedium, titleLarge } from "../../../styles/typography";
 
 export const ArticleHeaderContainer = styled.div`
   margin-top: -5rem;
@@ -14,11 +14,10 @@ export const Header = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 1.25rem;
 `;
 
 export const Title = styled.h1`
-  margin-top: 1.25rem;
-
   ${titleLarge}
 `;
 
@@ -31,8 +30,8 @@ export const Footer = styled.footer`
 
 export const FooterInfo = styled.div`
   display: flex;
-  gap: 0.5rem;
   align-items: center;
+  gap: 0.5rem;
   color: ${({ theme }) => theme.colors.label};
 `;
 
@@ -40,4 +39,10 @@ export const FooterInfoText = styled.span`
   color: ${({ theme }) => theme.colors.span};
 
   ${textMedium}
+`;
+
+export const ErrorMessage = styled.p`
+  text-align: center;
+
+  ${textLarge}
 `;

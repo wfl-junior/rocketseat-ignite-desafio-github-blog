@@ -1,16 +1,50 @@
+import { useParams } from "react-router-dom";
+import useSWR from "swr";
+import { api } from "../../services/api";
+import { formatCreatedAt } from "../../utils/formatCreatedAt";
 import { ArticleContent } from "./ArticleContent";
 import { ArticleHeader } from "./ArticleHeader";
 import { PostContainer } from "./styles";
 
-interface PostProps {}
+export interface IPost {
+  title: string;
+  body: string;
+  created_at: string;
+  comments: number;
+  html_url: string;
+  user: {
+    login: string;
+  };
+}
 
-export const Post: React.FC<PostProps> = () => (
-  <PostContainer>
-    <ArticleHeader />
+async function fetchPost(key: string): Promise<IPost> {
+  const number = key.replace(/^post\//, "");
 
-    <ArticleContent
-      children={`**Programming languages all have built-in data structures, but these often differ from one language to another.** This article attempts to list the built-in data structures available in JavaScript and what properties they have. These can be used to build other data structures. Wherever possible, comparisons with other languages are drawn.\n\n[Dynamic typing](#)\n\nJavaScript is a loosely typed and dynamic language. Variables in JavaScript are not directly associated with any particular value type, and any variable can be assigned (and re-assigned) values of all types:\n\n~~~javascript\nlet foo = 42;   // foo is now a number\nfoo = "bar";    // foo is now a string\nfoo = true;     // foo is now a boolean\r~~~
-      `}
-    />
-  </PostContainer>
-);
+  const { data } = await api.get<IPost>(
+    `/repos/wfl-junior/rocketseat-ignite-desafio-github-blog/issues/${number}`,
+  );
+
+  return {
+    title: data.title,
+    body: data.body,
+    comments: data.comments,
+    created_at: formatCreatedAt(data.created_at),
+    html_url: data.html_url,
+    user: {
+      login: data.user.login,
+    },
+  };
+}
+
+export const Post: React.FC = () => {
+  const { number } = useParams();
+  const { data: post, error } = useSWR(`post/${number}`, fetchPost);
+
+  return (
+    <PostContainer>
+      <ArticleHeader post={post} error={error} />
+
+      {post ? <ArticleContent children={post.body} /> : null}
+    </PostContainer>
+  );
+};

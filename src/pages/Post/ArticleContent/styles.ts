@@ -25,6 +25,15 @@ export const ArticleContentContainer = styled.div`
     }
   }
 
+  img {
+    max-width: 100%;
+    object-fit: cover;
+  }
+
+  ul {
+    margin-left: 1.25rem;
+  }
+
   .line-break {
     white-space: pre-wrap;
   }
