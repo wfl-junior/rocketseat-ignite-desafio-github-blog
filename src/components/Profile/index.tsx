@@ -47,6 +47,8 @@ async function fetchUser(): Promise<User> {
 export const Profile: React.FC = () => {
   const { data: user } = useSWR("user", fetchUser);
 
+  const followers = user?.followers || 0;
+
   return (
     <ProfileContainer>
       <Avatar src={user?.avatar_url || "https://github.com/wfl-junior.png"} />
@@ -79,7 +81,9 @@ export const Profile: React.FC = () => {
 
           <FooterInfo>
             <FontAwesomeIcon icon={faUserGroup} />
-            <FooterInfoText>{user?.followers || 0} seguidores</FooterInfoText>
+            <FooterInfoText>
+              {followers} seguidore{followers !== 1 && "s"}
+            </FooterInfoText>
           </FooterInfo>
         </Footer>
       </Info>

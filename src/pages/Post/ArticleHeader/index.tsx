@@ -66,7 +66,9 @@ export const ArticleHeader: React.FC<ArticleHeaderProps> = ({
 
             <FooterInfo>
               <FontAwesomeIcon icon={faComment} />
-              <FooterInfoText>{post.comments} comentários</FooterInfoText>
+              <FooterInfoText>
+                {post.comments} comentário{post.comments !== 1 && "s"}
+              </FooterInfoText>
             </FooterInfo>
           </Footer>
         </Fragment>
