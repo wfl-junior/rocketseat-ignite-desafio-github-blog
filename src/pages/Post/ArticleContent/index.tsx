@@ -51,9 +51,9 @@ export const ArticleContent: React.FC<ArticleContentProps> = ({ children }) => {
                 language={match[1]}
                 PreTag="div"
                 className="codeStyle"
-                showLineNumbers={true}
+                showLineNumbers
                 wrapLines={!!meta}
-                useInlineStyles={true}
+                useInlineStyles
                 lineProps={applyHighlights}
                 children={String(children).replace(/\s$/g, "")}
                 style={

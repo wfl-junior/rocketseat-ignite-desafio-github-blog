@@ -25,8 +25,15 @@ export const Title = styled.h1`
 export const Footer = styled.footer`
   margin-top: 0.5rem;
   display: flex;
-  gap: 2rem;
   align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  @media ${({ theme }) => theme.breakpoints.sm} {
+    gap: 1.5rem;
+    justify-content: flex-start;
+  }
 `;
 
 export const FooterInfo = styled.div`
