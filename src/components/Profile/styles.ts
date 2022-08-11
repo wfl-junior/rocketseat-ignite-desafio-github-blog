@@ -9,8 +9,14 @@ export const ProfileContainer = styled.div`
   border-radius: 10px;
   margin-top: -5rem;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 2rem;
   box-shadow: 0 2px 28px rgb(0 0 0 / 0.2);
+
+  @media ${({ theme }) => theme.breakpoints.sm} {
+    flex-direction: row;
+  }
 `;
 
 export const Avatar = styled.img`
@@ -27,7 +33,7 @@ export const Info = styled.div`
 
 export const Header = styled.header`
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: 1rem;
 `;
@@ -47,7 +53,14 @@ export const Footer = styled.footer`
   margin-top: auto;
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  @media ${({ theme }) => theme.breakpoints.sm} {
+    gap: 1.5rem;
+    justify-content: flex-start;
+  }
 `;
 
 export const FooterInfo = styled.div`

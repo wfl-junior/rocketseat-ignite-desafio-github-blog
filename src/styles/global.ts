@@ -14,6 +14,18 @@ export const GlobalStyle = createGlobalStyle`
     box-shadow: 0 0 0 1px ${({ theme }) => theme.colors.blue};
   }
 
+  html {
+    font-size: 87.5%;
+
+    @media ${({ theme }) => theme.breakpoints.sm} {
+      font-size: 93.75%;
+    }
+
+    @media ${({ theme }) => theme.breakpoints.lg} {
+      font-size: 100%;
+    }
+  }
+
   body, #root {
     line-height: 1.6;
     min-height: 100vh;

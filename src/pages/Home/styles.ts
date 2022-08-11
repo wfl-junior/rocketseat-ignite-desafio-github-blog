@@ -32,8 +32,17 @@ export const PublicationsAmount = styled.header`
 
 export const Posts = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   gap: 2rem;
+
+  @media ${({ theme }) => theme.breakpoints.sm} {
+    gap: 1.5rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media ${({ theme }) => theme.breakpoints.md} {
+    gap: 2rem;
+  }
 `;
 
 export const PostsMessage = styled.p`
